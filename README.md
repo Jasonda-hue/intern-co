@@ -1,3 +1,6 @@
+# Notice
+The README and MANUAL will be updated soon.
+
 # Intern Co.
 
 Intern Co. is an in-development project that gets the most out of AI agents while keeping costs as low as possible. It runs a small office of Claude agents on your own computer: you set a goal, approve the plan, and watch teams do the work in a live 3D office.
@@ -6,11 +9,11 @@ Intern Co. is an in-development project that gets the most out of AI agents whil
 
 Main features:
 
-- **Prompt builder** that turns a short goal into a clear one
-- **Hubs**: teams with a manager and mini agents
-- **Task cards** with duplicate detection, command checks and manager reviews
-- **Parallel goals and agents**, with a limit on how many run at once
-- **Goal scoring and KPIs** for every finished goal
+- **Prompt builder** 
+- **Hubs**
+- **Task cards**
+- **Parallel goals and agents**
+- **Goal scoring and KPIs**
 
 ## Background and purpose
 
@@ -28,15 +31,11 @@ You write the goal and agree its requirements. The lead manager splits the work 
 |---|---|
 | ![The Workspaces window with the workspace builder and six templates](docs/images/workspaces.png) | ![The New goal dialog with hubs, a lead hub and a dollar budget](docs/images/new-goal.png) |
 
-**A finished goal, scored by the checker.** This goal asked, in Japanese, for a 3D action game for children. The checker gave it 79%: the 3D graphics, three stages and simple design were met, but it could not confirm that `play.bat` opens the game window, and no child has played the game yet.
 
-![A Results card in Japanese: a goal scored 79 percent, Partly achieved, with evidence for each requirement](docs/images/results.png)
 
 ## Algorithm map
 
-The full path of a goal, step by step: where you decide, where managers review, where work goes back for another try, and where it can stop early.
-
-![Algorithm map: Goal, Start, Plan, Work and Result stages, with approval, review and retry loops](docs/images/algorithm-map.png)
+(Under development)
 
 ## Tech stack
 
@@ -69,7 +68,7 @@ git clone https://github.com/Jasonda-hue/intern-co.git
 cd intern-co
 ```
 
-**Windows.** Run these once in a terminal, then double-click `Intern Co.bat`:
+**Windows.** Run these once in a terminal, then run `Intern Co.bat`:
 
 ```
 pip install -r requirements.txt
@@ -89,14 +88,8 @@ The first account you create becomes the owner. It is an account for this app on
 
 ## Safety
 
-Agents can run commands on your computer:
-
-- Reading and testing inside a goal's own folder runs without asking. You can turn this off in Settings.
-- Commands that install, download, delete or change things outside that folder wait for your approval.
-- Stopping programs, starting servers and shutting down the computer are always refused.
-- File edits are only allowed inside the goal's own folder.
-
-These checks reduce risk but do not remove it. Read commands before you allow them, and use the app at your own risk.
+Agents can run commands on your computer automatically.
+Read commands before you allow them, and use the app at your own risk.
 
 ## Your data
 
@@ -104,7 +97,7 @@ Accounts, goals and files stay in the `data` folder on your computer. Never shar
 
 ## Status
 
-In development. Built and tested on Windows; the Mac version has not been run on a Mac yet. Google sign-in is optional and needs your own Google OAuth client; see `MANUAL.md`, section 12.
+In development. Built and tested on Windows; the Mac version has not been run on a Mac yet. 
 
 ## Author
 
