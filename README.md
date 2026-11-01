@@ -30,6 +30,10 @@ You write the goal and agree its requirements. The lead manager splits the work 
 |---|---|
 | ![The Workspaces window with the workspace builder and six templates](docs/images/workspaces.png) | ![The New goal dialog with hubs, a lead hub and a dollar budget](docs/images/new-goal.png) |
 
+**A finished goal, scored by the checker.** This goal asked, in Japanese, for a 3D action game for children. The checker gave it 79%: the 3D graphics, three stages and simple design were met, but it could not confirm that `play.bat` opens the game window, and no child has played the game yet.
+
+![A Results card in Japanese: a goal scored 79 percent, Partly achieved, with evidence for each requirement](docs/images/results.png)
+
 ## Tech stack
 
 | Area | Tools |
