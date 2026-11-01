@@ -1,0 +1,2 @@
+# Mac launch scripts must keep Unix line endings
+*.command text eol=lf

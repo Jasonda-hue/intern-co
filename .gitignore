@@ -1,0 +1,21 @@
+# Private data: never commit
+data/
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+password-reset.txt
+google_client.json
+library/
+workspaces/
+
+# Build output and local tooling
+dist/
+__pycache__/
+*.pyc
+.claude/
+
+# Keys: never commit
+.env
+.env.*
+*.key
