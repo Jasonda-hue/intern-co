@@ -1,24 +1,22 @@
 # Intern Co.
 
-Run a small office of AI agents on your own computer. Set a goal, approve the plan, and watch Claude-powered teams do the work in a live 3D office.
+Intern Co. is an in-development project that gets the most out of AI agents while keeping costs as low as possible. It runs a small office of Claude agents on your own computer: you set a goal, approve the plan, and watch teams do the work in a live 3D office.
 
 ![The Intern Co. 3D office, with six hubs of agents around a central courtyard](docs/images/office.png)
 
-Intern Co. turns Claude into a team that works on your computer. Choose a ready-made workspace, or describe your aim and have one designed for you. Give it a goal, and hub managers split the work into task cards for mini agents. Nothing starts until you approve the plan, unless you turn on automatic approval.
+Main features:
 
-- Watch the work happen in a live 3D office
-- Review each plan, and decide on risky commands from your Inbox
-- Set a budget for each goal, and pause or continue goals
-- See each finished goal scored against its requirements
-- Use it in English or Japanese
+- **Prompt builder** that turns a short goal into a clear one
+- **Hubs**: teams with a manager and mini agents
+- **Task cards** with duplicate detection, command checks and manager reviews
+- **Parallel goals and agents**, with a limit on how many run at once
+- **Goal scoring and KPIs** for every finished goal
 
-## Why I built this
+## Background and purpose
 
-I wanted AI agents to work like a small team I could manage, instead of one long chat I had to watch. Three ideas shaped the design:
+Token usage has been rising as newer AI models become more capable. AI tools are now widely used, but agents often repeat the same work, which wastes tokens and leads to results nobody asked for.
 
-- **People stay in charge.** Managers plan and mini agents do the work, but the plan needs approval first. Mini agents only talk to their own manager and teammates, and only managers talk across hubs.
-- **Usage stays low.** Each agent is a separate process that costs money, so only agents with work run, idle sessions close, and task cards stay small. Helper sub-agents are off by default: in a measured test, one agent reading five files used about half as much as the same agent with five helpers.
-- **The result gets checked by someone else.** Requirements are agreed before work starts. When the goal ends, a separate read-only checker scores the delivered files against them.
+Intern Co. divides AI agents into hubs. Each hub has a manager that breaks large tasks into small task cards. The hub's mini agents work on these cards, on a cheaper model if you choose one, and the manager reviews each result. You see every plan and approve or reject it before any work starts, unless you turn on automatic approval.
 
 ## How it works
 
@@ -34,6 +32,12 @@ You write the goal and agree its requirements. The lead manager splits the work 
 
 ![A Results card in Japanese: a goal scored 79 percent, Partly achieved, with evidence for each requirement](docs/images/results.png)
 
+## Algorithm map
+
+The full path of a goal, step by step: where you decide, where managers review, where work goes back for another try, and where it can stop early.
+
+![Algorithm map: Goal, Start, Plan, Work and Result stages, with approval, review and retry loops](docs/images/algorithm-map.png)
+
 ## Tech stack
 
 | Area | Tools |
@@ -43,14 +47,6 @@ You write the goal and agree its requirements. The lead manager splits the work 
 | Interface | JavaScript, Three.js for the 3D office |
 | Data | SQLite |
 | Desktop window | pywebview |
-
-**Engineering highlights:**
-
-- Runs several goals at once, each with its own folder and budget, and limits how many agent processes run together
-- Sorts every shell command into run, ask or refuse before it executes
-- Limits file edits to the goal's own folder
-- Checks for an API key at every point that starts Claude
-- Translates the whole interface between English and Japanese, including messages from the server
 
 ## Before you start
 
@@ -108,11 +104,11 @@ Accounts, goals and files stay in the `data` folder on your computer. Never shar
 
 ## Status
 
-Developed on Windows. The Mac version has not been run on a Mac yet. Google sign-in is optional and needs your own Google OAuth client; see `MANUAL.md`, section 12.
+In development. Built and tested on Windows; the Mac version has not been run on a Mac yet. Google sign-in is optional and needs your own Google OAuth client; see `MANUAL.md`, section 12.
 
 ## Author
 
-Jason D Anderson, 電気通信大学大学院
+Jason D Anderson, The University of Electro-Communications (電気通信大学大学院), Graduate School
 
 ## License
 
