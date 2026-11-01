@@ -2,6 +2,8 @@
 
 Run a small office of AI agents on your own computer. Set a goal, approve the plan, and watch Claude-powered teams do the work in a live 3D office.
 
+![The Intern Co. 3D office, with six hubs of agents around a central courtyard](docs/images/office.png)
+
 Intern Co. turns Claude into a team that works on your computer. Choose a ready-made workspace, or describe your aim and have one designed for you. Give it a goal, and hub managers split the work into task cards for mini agents. Nothing starts until you approve the plan, unless you turn on automatic approval.
 
 - Watch the work happen in a live 3D office
@@ -9,6 +11,42 @@ Intern Co. turns Claude into a team that works on your computer. Choose a ready-
 - Set a budget for each goal, and pause or continue goals
 - See each finished goal scored against its requirements
 - Use it in English or Japanese
+
+## Why I built this
+
+I wanted AI agents to work like a small team I could manage, instead of one long chat I had to watch. Three ideas shaped the design:
+
+- **People stay in charge.** Managers plan and mini agents do the work, but the plan needs approval first. Mini agents only talk to their own manager and teammates, and only managers talk across hubs.
+- **Usage stays low.** Each agent is a separate process that costs money, so only agents with work run, idle sessions close, and task cards stay small. Helper sub-agents are off by default: in a measured test, one agent reading five files used about half as much as the same agent with five helpers.
+- **The result gets checked by someone else.** Requirements are agreed before work starts. When the goal ends, a separate read-only checker scores the delivered files against them.
+
+## How it works
+
+![How a goal moves from you to the managers, the mini agents and the final check](docs/images/how-it-works.png)
+
+You write the goal and agree its requirements. The lead manager splits the work between hubs, and each manager sends you a plan of task cards. Once you approve, mini agents work their cards and managers pass them or send them back. When every card has passed, the result is scored and the files are copied to your output folder.
+
+| Build a workspace for your goal | Start a goal |
+|---|---|
+| ![The Workspaces window with the workspace builder and six templates](docs/images/workspaces.png) | ![The New goal dialog with hubs, a lead hub and a dollar budget](docs/images/new-goal.png) |
+
+## Tech stack
+
+| Area | Tools |
+|---|---|
+| Agents | Python, `asyncio`, Claude Agent SDK, Claude Code |
+| App server | NiceGUI, FastAPI |
+| Interface | JavaScript, Three.js for the 3D office |
+| Data | SQLite |
+| Desktop window | pywebview |
+
+**Engineering highlights:**
+
+- Runs several goals at once, each with its own folder and budget, and limits how many agent processes run together
+- Sorts every shell command into run, ask or refuse before it executes
+- Limits file edits to the goal's own folder
+- Checks for an API key at every point that starts Claude
+- Translates the whole interface between English and Japanese, including messages from the server
 
 ## Before you start
 
